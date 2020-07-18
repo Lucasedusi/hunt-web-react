@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import api from '../../services/api';
+
+import './styles.css'
 
 export default class Main extends Component {
   state = {
@@ -17,10 +20,17 @@ export default class Main extends Component {
   };
 
   render() {
+    const { products } = this.state;
+
     return (
-      <div className="list-name">
-        {this.state.products.map((product) => (
-          <h1>{product.title}</h1>
+      <div className="product-list">
+        {products.map((product) => (
+          <article key={product._id}>
+            <strong>{product.title}</strong>
+            <strong>{product.description}</strong>
+
+            <a href="#">Acessar</a>
+          </article>
         ))}
       </div>
     );
